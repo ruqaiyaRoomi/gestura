@@ -7,10 +7,12 @@ workflows:
     scripts:
       - name: Install dependencies
         script: |
+          cd gestura-frontend
           npm install
       - name: Build web app
         script: |
+          cd gestura-frontend
           npm run build
     artifacts:
-      - build/**
-      - dist/**
+      - gestura-frontend/build/**
+      - gestura-frontend/dist/**
