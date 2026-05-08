@@ -21,7 +21,7 @@ import { showGuestOverlay, closeGuestOverlay } from '../stores/guest';
 
 const router = useRouter()
 
-// close overlay without any naviagtion
+// close overlay without any navigation
 function close () {
     closeGuestOverlay()
 }

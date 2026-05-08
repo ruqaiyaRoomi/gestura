@@ -7,6 +7,7 @@
         <span></span>
     </header>
 
+    <cameraPermissionOverlay :show="cameraError" @retry="startCameraDetection"/>
     <div class="cameraInput">
         <video ref="videoRef" autoplay playsinline v-show="!frozen"></video>
         <canvas ref="snapShot" v-show="frozen" class="snapshot"></canvas>
@@ -31,6 +32,9 @@ import {useRouter} from 'vue-router'
 
 import NavBar from '../components/navBar.vue';
 import { useGesture } from '../composables/useGesture';
+import cameraPermissionOverlay from '../components/cameraPermissionOverlay.vue';
+
+const cameraError = ref(false)
 
 const router = useRouter()
 const videoRef = ref(null)
@@ -48,8 +52,9 @@ onMounted( async () => {
     window.addEventListener('beforeunload', stopDetection)
 })
 
-onUnmounted(() => {
-    stopDetection()
+onUnmounted(async () => {
+    await nextTick()
+    await stopDetection()
     window.removeEventListener('beforeunload', stopDetection)
 })
 
@@ -102,6 +107,19 @@ async function retry(){
         }
     
     startDetection()
+}
+
+
+async function startCameraDetection() {
+    try {
+        cameraError.value = false
+        await startDetection()
+
+    } catch (err) {
+        cameraError.value = true
+        console.warn('Camera permission or detection failed: ', err)
+
+    }
 }
 
 </script>
