@@ -1,7 +1,7 @@
 <template>
   <div v-if="showCameraError" class="overlay">
     <div class="modal">
-        <span class="close" v-on:click="router.back()"><i class="fa-solid fa-xmark"></i></span>
+        <span class="close" v-on:click="$emit('close')"><i class="fa-solid fa-xmark"></i></span>
       <h2 class="heading">Camera Access Blocked</h2>
 
       <p class="description">
@@ -17,8 +17,6 @@
 </template>
 
 <script setup>
-import {useRouter} from 'vue-router'
-const router = useRouter()
 
 defineProps({
   showCameraError: {
@@ -67,8 +65,12 @@ defineEmits(['retry', 'close'])
 }
 
 .close {
-        font-size: 20px;
-        color: var(--text-dark);
+         position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 20px;
+  color: var(--text-dark);
+  cursor: pointer;
     }
 
 .description {
