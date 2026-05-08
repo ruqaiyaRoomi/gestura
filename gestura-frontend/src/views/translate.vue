@@ -114,6 +114,7 @@ async function retry(){
 
 async function startCameraDetection() {
     try {
+        const stream = await navigator.mediaDevices.getUserMedia({video: true})
         cameraError.value = false
         await startDetection()
 
