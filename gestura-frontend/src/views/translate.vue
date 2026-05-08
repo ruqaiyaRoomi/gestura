@@ -119,6 +119,7 @@ async function startCameraDetection() {
 
     } catch (err) {
         cameraError.value = true
+        console.log('Camera error is set to:', cameraError.value)
         console.warn('Camera permission or detection failed: ', err)
 
     }
