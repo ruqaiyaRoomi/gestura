@@ -48,7 +48,7 @@ const {predictedText, startDetection, stopDetection} = useGesture(videoRef)
 
 onMounted( async () => {
     await nextTick()
-    startDetection()
+    startCameraDetection()
     window.addEventListener('beforeunload', stopDetection)
 })
 
