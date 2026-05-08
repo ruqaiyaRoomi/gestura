@@ -10,6 +10,7 @@
     <cameraPermissionOverlay 
     :showCameraError="cameraError" 
     @retry="startCameraDetection" 
+    @close="cameraError = false"
     />
     <div class="cameraInput">
         <video ref="videoRef" autoplay playsinline v-show="!frozen"></video>

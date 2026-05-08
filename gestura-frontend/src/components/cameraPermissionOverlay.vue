@@ -1,73 +1,98 @@
 <template>
-    <div v-if="showCameraError" class="camera-alert">
-        <div class="alert-content">
-            <h3>Camera Access Blocked</h3>
-            <p>
-                Gestura needs camera access to recognize your signs.
-                Please allow camera permissions and try again
-            </p>
-        </div>
+  <div v-if="showCameraError" class="overlay">
+    <div class="modal">
+      <h2 class="heading">Camera Access Blocked</h2>
 
-        <button v-on:click="$emit('retry')">Try Again</button>
+      <p class="description">
+        Gestura needs camera access to recognize your signs.
+        Please allow camera permissions and try again.
+      </p>
+
+      <button @click="$emit('retry')">
+        Try Again
+      </button>
+
+      <button @click="$emit('close')" class="closeBtn">
+        Maybe Later
+      </button>
     </div>
+  </div>
 </template>
 
 <script setup>
 defineProps({
-    showCameraError: {
-        type: Boolean,
-        default: false
-    }
+  showCameraError: {
+    type: Boolean,
+    default: false
+  }
 })
 
-defineEmits(['retry'])
-
+defineEmits(['retry', 'close'])
 </script>
 
 <style scoped>
-.camera-alert {
-  width: 100%;
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
   background: var(--bg-card);
-  border: 1px solid rgba(255, 80, 80, 0.35);
+  padding: 28px 22px;
   border-radius: var(--radius-card);
-  padding: 14px;
-  margin: 12px 0;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
   box-shadow: var(--shadow-card);
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
 }
 
-.alert-content h3 {
-  font-size: 16px;
+.heading {
+  font-size: 22px;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 4px;
+  margin: 0;
 }
 
-.alert-content p {
-  font-size: 14px;
+.description {
+  font-size: 16px;
   color: var(--text-muted);
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
-.camera-alert button {
+.modal button {
   width: 100%;
-  height: 44px;
+  height: 50px;
   background-color: var(--accent);
   color: white;
   border: none;
   border-radius: var(--radius-card);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
+  margin-top: 8px;
   box-shadow: var(--accent-shadow);
   transition: 0.2s ease;
 }
 
-.camera-alert button:hover {
+.modal button:hover {
   transform: translateY(-1px);
   opacity: 0.9;
+}
+
+.modal .closeBtn {
+  background-color: var(--bg-secondary);
+  color: var(--text-muted);
+  box-shadow: none;
 }
 </style>
