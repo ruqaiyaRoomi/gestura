@@ -7,7 +7,10 @@
         <span></span>
     </header>
 
-    <cameraPermissionOverlay :show="cameraError" @retry="startCameraDetection"/>
+    <cameraPermissionOverlay 
+    :show="cameraError" 
+    @retry="startCameraDetection" 
+    />
     <div class="cameraInput">
         <video ref="videoRef" autoplay playsinline v-show="!frozen"></video>
         <canvas ref="snapShot" v-show="frozen" class="snapshot"></canvas>
@@ -48,7 +51,7 @@ const {predictedText, startDetection, stopDetection} = useGesture(videoRef)
 
 onMounted( async () => {
     await nextTick()
-    startCameraDetection()
+    await startCameraDetection()
     window.addEventListener('beforeunload', stopDetection)
 })
 
@@ -108,7 +111,6 @@ async function retry(){
     
     startDetection()
 }
-
 
 async function startCameraDetection() {
     try {
