@@ -72,7 +72,7 @@ export function useGesture(videoRef) {
       },
     });
 
-    cameraInstance.start();
+   await cameraInstance.start();
 
     function startInterval() {
       if (interval) return;
@@ -129,7 +129,7 @@ export function useGesture(videoRef) {
   }
 
   function startDetection() {
-    extractLandmarks();
+   return extractLandmarks();
   }
 
   function stopDetection() {
