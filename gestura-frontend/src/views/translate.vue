@@ -8,7 +8,7 @@
     </header>
 
     <cameraPermissionOverlay 
-    :show="cameraError" 
+    :showCameraError="cameraError" 
     @retry="startCameraDetection" 
     />
     <div class="cameraInput">
