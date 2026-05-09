@@ -132,6 +132,10 @@ export function useGesture(videoRef) {
 
         const feedback = getRecognitionFeedback(hand)
 
+        if(feedback) {
+          triggerFeedback(feedback)
+        }
+
         // Check if detected hand is left for x-axis mirroring
         isLeft = results.multiHandedness[0].label === "Left";
         // Flatten 21 landmarks (x, y, z) into a single array of 63 values
@@ -145,6 +149,8 @@ export function useGesture(videoRef) {
         // No hand detected in frame
         latestLandmarks = null;
         noHandDetected.value = true;
+        previousLandmarks = null;
+        triggerFeedback('No Hand Detected')
       }
     });
     // Hold count variables for gesture consistency validation
