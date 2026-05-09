@@ -9,6 +9,94 @@ export function useGesture(videoRef) {
   let cameraInstance = null;
   let handsInstance = null;
 
+
+  const feedbackMessage = ref('')
+  const showFeedback = ref(false)
+
+  let feedbackTimeout = null
+  let previousLandmarks = null
+  let lastFeedbackTime = 0
+
+
+  function triggerFeedback(message) {
+    const now = Date.now()
+
+    if (now - lastFeedbackTime < 1800) return
+
+    feedbackMessage.value = message
+    showFeedback.value = true
+    lastFeedbackTime = now
+
+    if(feedbackTimeout) {
+      clearTimeout(feedbackTimeout)
+    }
+
+
+    feedbackTimeout = setTimeout(() => {
+      showFeedback.value = false
+    }, 1800)
+  }
+
+  function getRecognitionFeedback(landmarks) {
+  if (!landmarks || landmarks.length === 0) {
+    return 'No hand detected'
+  }
+
+  const xs = landmarks.map(point => point.x)
+  const ys = landmarks.map(point => point.y)
+
+  const minX = Math.min(...xs)
+  const maxX = Math.max(...xs)
+  const minY = Math.min(...ys)
+  const maxY = Math.max(...ys)
+
+  const handWidth = maxX - minX
+  const handHeight = maxY - minY
+
+  // 1. Hand too far away
+  if (handWidth < 0.18 || handHeight < 0.18) {
+    return 'Move your hand closer to the camera'
+  }
+
+  // 2. Hand too close to the edge
+  const edgeMargin = 0.06
+
+  if (
+    minX < edgeMargin ||
+    maxX > 1 - edgeMargin ||
+    minY < edgeMargin ||
+    maxY > 1 - edgeMargin
+  ) {
+    return 'Keep your full hand inside the frame'
+  }
+
+  // 3. Hand moving too much
+  if (previousLandmarks) {
+    let totalMovement = 0
+
+    for (let i = 0; i < landmarks.length; i++) {
+      const dx = landmarks[i].x - previousLandmarks[i].x
+      const dy = landmarks[i].y - previousLandmarks[i].y
+
+      totalMovement += Math.sqrt(dx * dx + dy * dy)
+    }
+
+    const averageMovement = totalMovement / landmarks.length
+
+    if (averageMovement > 0.035) {
+      return 'Hold your hand steady'
+    }
+  }
+
+  previousLandmarks = landmarks.map(point => ({
+    x: point.x,
+    y: point.y,
+    z: point.z
+  }))
+
+  return ''
+}
+
   async function extractLandmarks() {
     // Dynamically import MediaPipe Hands and Camera utilities
     const { Hands } = await import("@mediapipe/hands");
@@ -41,6 +129,8 @@ export function useGesture(videoRef) {
       {
         noHandDetected.value = false;
         const hand = results.multiHandLandmarks[0];
+
+        const feedback = getRecognitionFeedback(hand)
 
         // Check if detected hand is left for x-axis mirroring
         isLeft = results.multiHandedness[0].label === "Left";
@@ -128,17 +218,22 @@ export function useGesture(videoRef) {
     }
   }
 
-  function startDetection() {
+  async function startDetection() {
+  try {
+    if (navigator.permissions) {
+      const permission = await navigator.permissions.query({ name: 'camera' })
 
-    const permission = await navigatior.permissions.query({name: 'camera'})
-
-    if( permission.state === 'denied') {
-      throw new Error('Camera permission denied')
+      if (permission.state === 'denied') {
+        throw new Error('Camera permission denied')
+      }
     }
 
-   return extractLandmarks();
-
+    return await extractLandmarks()
+  } catch (err) {
+    console.error('Camera start failed:', err)
+    throw err
   }
+}
 
   function stopDetection() {
     //Clear prediction interval
@@ -161,5 +256,10 @@ export function useGesture(videoRef) {
   // Automatically stop detection when component is unmounted
   onUnmounted(() => stopDetection());
 
-  return { predictedText, noHandDetected, startDetection, stopDetection };
+  return { predictedText,
+  noHandDetected,
+  feedbackMessage,
+  showFeedback,
+  startDetection,
+  stopDetection };
 }

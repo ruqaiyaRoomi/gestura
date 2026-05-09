@@ -13,6 +13,8 @@
     @close="cameraError = false"
     />
     <div class="cameraInput">
+
+        <recognitionFeedBack  :show="showFeedback" :message="feedbackMessage"/>
         <video ref="videoRef" autoplay playsinline v-show="!frozen"></video>
         <canvas ref="snapShot" v-show="frozen" class="snapshot"></canvas>
         <div class="predicted" :class="{frozen: frozen}">
@@ -37,6 +39,7 @@ import {useRouter} from 'vue-router'
 import NavBar from '../components/navBar.vue';
 import { useGesture } from '../composables/useGesture';
 import cameraPermissionOverlay from '../components/cameraPermissionOverlay.vue';
+import recognitionFeedBack from '../components/recognitionFeedBack.vue';
 
 const cameraError = ref(false)
 
@@ -48,7 +51,7 @@ const frozen = ref(false)
 const snapShot = ref(null)
 
 // ML gesture detection hook
-const {predictedText, startDetection, stopDetection} = useGesture(videoRef)
+const {predictedText, startDetection, stopDetection, showFeedback, feedbackMessage} = useGesture(videoRef)
 
 onMounted( async () => {
     await nextTick()
