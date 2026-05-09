@@ -1,8 +1,8 @@
 <template>
   <div v-if="showCameraError" class="overlay">
     <div class="modal">
-        <span class="close" v-on:click="$emit('close')"><i class="fa-solid fa-xmark"></i></span>
       <h2 class="heading">Camera Access Blocked</h2>
+       <span class="close" v-on:click="$emit('close')"><i class="fa-solid fa-xmark"></i></span>
 
       <p class="description">
         Gestura needs camera access to recognize your signs.

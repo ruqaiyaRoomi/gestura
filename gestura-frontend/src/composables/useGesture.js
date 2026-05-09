@@ -129,7 +129,15 @@ export function useGesture(videoRef) {
   }
 
   function startDetection() {
+
+    const permission = await navigatior.permissions.query({name: 'camera'})
+
+    if( permission.state === 'denied') {
+      throw new Error('Camera permission denied')
+    }
+
    return extractLandmarks();
+
   }
 
   function stopDetection() {
