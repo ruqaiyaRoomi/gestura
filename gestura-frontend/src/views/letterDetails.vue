@@ -18,7 +18,12 @@
         <p class="description">
             {{ currentLetter.description }}
         </p>
-
+        <Transition>
+            <div v-if="showStatus" class="statusBanner">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>{{ statusMessage }}</span>
+            </div>
+        </Transition>
         <!-- Practice -->
         <div class="tryIt">
             <p class="tryTitle">Try it yourself</p>
@@ -27,7 +32,22 @@
                 Open Camera <i class="fa-solid fa-camera"></i>
             </button>
 
-            <button class="markDoneButton" @click="markDone" :disabled="isSaving">Mark as Done</button>
+            <button
+                class="markDoneButton"
+                :class="{ completed: isCompleted }"
+                @click="markDone"
+                :disabled="isSaving">
+
+                <span v-if="isSaving">Saving...</span>
+
+                <span v-else-if="isCompleted">
+                    Completed <i class="fa-solid fa-check"></i>
+                </span>
+
+                <span v-else>
+                    Mark as Done
+                </span>
+            </button>
         </div>
     </div>
 
@@ -56,16 +76,31 @@ const router = useRouter();
 
 // Track API request state 
 const isSaving = ref(false)
+const isCompleted = ref(false)
+const showStatus = ref(false)
+const statusMessage = ref('')
 // Get letter from route and map to dataset
 const letter = computed(() => route.params.letter)
 const currentLetter = computed(() => alphabetData[letter.value])
 
 
 
+function showStatusMessage(message) {
+    statusMessage.value = message
+    showStatus.value = true
+
+    setTimeout(() => {
+        showStatus.value = false
+    }, 2200)
+}
+
+
 // Save progress for current letter
 async function markDone() {
     if ( !userStore.user?._id) {
-    return; }
+        showStatusMessage('Please log in to save your progress.')
+        return; 
+}
 
     isSaving.value = true
     try {
@@ -76,14 +111,17 @@ async function markDone() {
             body: JSON.stringify({ 
                 userId: userStore.user._id,
                 module: 'ASL Alphabet',
-                letter: letter
+                letter: letter.value
             }),
             
         })
          const data = await response.json()
         // error handling
      if( data.saved) {
-        console.log(`Letter ${letter} marked as done` )
+        isCompleted.value = true
+        showStatusMessage('Progress saved successfully')
+     } else{
+        showStatusMessage('Could not save progress. Please try again')
      }
     }  catch (err) {
         console.error('Error saving letter')
@@ -218,5 +256,46 @@ console.log("currentLetter:", currentLetter)
         }
    }
 
+
+   .statusBanner {
+    width: 100%;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border: 1.5px solid rgba(233, 150, 39, 0.45);
+    border-radius: 999px;
+    padding: 12px 16px;
+    box-shadow: var(--shadow-card);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.statusBanner i {
+    color: var(--accent);
+}
+
+.status-slide-enter-active,
+.status-slide-leave-active {
+    transition: all 0.25s ease;
+}
+
+.status-slide-enter-from,
+.status-slide-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+.markDoneButton.completed {
+    background-color: var(--accent) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 8px 18px var(--accent-shadow) !important;
+}
 
 </style>
