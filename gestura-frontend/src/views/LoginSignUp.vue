@@ -52,7 +52,6 @@ function continueAsGuest() {
   }, 1500);
 }
 </script>
-
 <style scoped>
 .screen {
   min-height: 100vh;
@@ -60,126 +59,149 @@ function continueAsGuest() {
   background-color: var(--bg-primary);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+.letterDetail {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  padding: 20px 16px 100px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
 }
 
 .header {
-  padding: 16px 20px;
-}
-
-.logo {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
 }
 
-.gestura {
-  height: 32px;
-  width: 32px;
-}
-
-.logo span {
+.back {
   font-size: 20px;
-  font-weight: 600;
-  color: var(--text-dark);
-}
-
-.top {
-  position: relative;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.illustration {
-  width: 95%;
-  max-width: 420px;
-  object-fit: contain;
-  margin-top: 10px;
-}
-
-.wave {
-  position: absolute;
-  bottom: -3px;
-  width: 100%;
-}
-
-.body {
-  background-color: var(--bg-primary);
-  padding: 30px 24px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  color: var(--text-primary);
 }
 
 .title {
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--text-primary);
-  text-align: center;
 }
 
-.buttons {
-  width: 100%;
+.card {
+  background: var(--bg-card);
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
 }
 
-.createAccount {
+.letterImage {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}
+
+.letterLabel {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 12px 0 0;
+}
+
+.description {
+  font-size: 18px;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.tryIt {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 15px;
+}
+
+.tryTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.tip {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.tryIt button {
   width: 100%;
   height: 56px;
   background-color: var(--accent);
-  color: var(--bg-card);
+  color: white;
   border: none;
   border-radius: 14px;
   font-size: 16px;
   font-weight: 600;
   box-shadow: 0 8px 18px var(--accent-shadow);
   transition: 0.2s ease;
+  margin-top: 20px;
+  justify-content: center;
 }
 
-.createAccount:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
+.markDoneButton {
+  background: transparent !important;
+  color: var(--accent);
+  border: 1.5px solid var(--accent) !important;
+  box-shadow: none !important;
 }
 
-.or {
+.markDoneButton.completed {
+  background-color: var(--accent) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 8px 18px var(--accent-shadow) !important;
+}
+
+.statusBanner {
+  width: 100%;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1.5px solid rgba(233, 150, 39, 0.45);
+  border-radius: 999px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow-card);
+
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
-}
+  justify-content: center;
+  gap: 8px;
 
-.line {
-  flex: 1;
-  height: 1px;
-  background-color: #ddd;
-}
-
-.login {
-  width: 100%;
-  height: 56px;
-  background-color: transparent;
-  color: var(--accent);
-  border: 2px solid var(--accent);
-  border-radius: 14px;
-  font-size: 16px;
-  font-weight: 600;
-  transition: 0.2s ease;
-}
-
-.guest {
-  margin: 0;
-  text-align: center;
-  color: var(--text-muted);
   font-size: 14px;
+  font-weight: 600;
+  text-align: center;
 }
 
-.guest:hover {
-  color: var(--text-muted);
+.statusBanner i {
+  color: var(--accent);
+}
+
+.status-slide-enter-active,
+.status-slide-leave-active {
+  transition: all 0.25s ease;
+}
+
+.status-slide-enter-from,
+.status-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
 }
 
 @media (min-width: 768px) {
@@ -187,5 +209,15 @@ function continueAsGuest() {
     max-width: 480px;
     margin: 0 auto;
   }
+
+  .letterImage {
+    width: 220px;
+    height: 220px;
+  }
+
+  .letterLabel {
+    font-size: 56px;
+  }
 }
 </style>
+

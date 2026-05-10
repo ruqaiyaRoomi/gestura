@@ -4,6 +4,13 @@
     <Header/>
     <!-- letter detail screen -->
     <div class="letterDetail">
+         <Transition>
+            <div v-if="showStatus" class="statusBanner">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>{{ statusMessage }}</span>
+            </div>
+        </Transition>
+        
         <div class="header">
             <span class="back" v-on:click="router.push('/learn')"><i class="fa-solid fa-xmark"></i></span>
             <span class="title">ASL Alphabet</span>
@@ -18,12 +25,7 @@
         <p class="description">
             {{ currentLetter.description }}
         </p>
-        <Transition>
-            <div v-if="showStatus" class="statusBanner">
-                <i class="fa-solid fa-circle-info"></i>
-                <span>{{ statusMessage }}</span>
-            </div>
-        </Transition>
+       
         <!-- Practice -->
         <div class="tryIt">
             <p class="tryTitle">Try it yourself</p>

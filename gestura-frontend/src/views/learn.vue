@@ -1,7 +1,6 @@
 <template>
     <div class="learn">
     <Header />
-    <NavBar />
    <!-- page title -->
     <div class="title">
         <h1 class="heading">Learn</h1>
@@ -68,7 +67,7 @@
                 <p>Quiz</p>
             </div>
         </div>
-
+    <NavBar />
     </div>
 </template>
 
@@ -114,194 +113,194 @@ onMounted(() => userProgress())
 </script>
 
 <style scoped>
-   .learn {
-    background: var( --bg-primary);
-    min-height: 100vh;
-    padding: 20px 16px 100px;
-   }
+   .screen {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
 
-   .title {
-    margin-top: 10px;
-    margin-bottom: 24px;
-   }
+.learn {
+  flex: 1;
+  background: var(--bg-primary);
+  padding: 20px 16px 100px;
+}
 
-   .heading {
-    font-size: 28px;
-    font-weight: 700;
-    margin: 0;
-     color: var(--text-primary);
-  
-   }
+.title {
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
 
-   .subheading {
-    margin-top: 10px;
-    color: var(--text-muted);
-    font-size: 14px;
-   }
+.heading {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
 
-   .bodyContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-   }
+.subheading {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
 
-   .cardContainer {
-    background: var(--bg-card);
-    border-radius: 22px;
-    padding: 18px;
-    box-shadow: var(--shadow-card );
-    
-   }
+.bodyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-   .imageContainer {
-    width: 100%;
-    height: 180px;
-    background: var(--bg-primary);
-   
-    border-radius:16px ;
+.cardContainer {
+  background: var(--bg-card);
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+}
 
-    justify-content: center;
-    align-items: center;
-    display: flex;
+.imageContainer {
+  width: 100%;
+  height: 180px;
+  background: var(--bg-primary);
+  border-radius: 16px;
 
-   }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-   .imageContainer img {
-    width: 75%;
-    height: auto;
+.imageContainer img {
+  width: 75%;
+  height: auto;
+}
 
-   }
+.imageContainer .aslImage {
+  width: 58%;
+}
 
-   .imageContainer .aslImage {
-    width: 58%;
-   }
+.aslBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 14px;
+}
 
-   .aslBody {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-top: 14px;
-  
-   }
+.type {
+  font-size: 12px;
+  color: var(--text-muted);
+}
 
-   .type {
-    font-size: 12px;
-    color: var(--text-muted);
-   }
+.textblock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-   .textblock {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-   }
+.ASL {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
 
-   .ASL {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-primary);
-   }
+.aslBody span {
+  font-size: 18px;
+  color: var(--text-muted);
+}
 
-   .aslBody span{
-    font-size: 18px;
-    color: var(--text-muted);
-   }
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
 
+.progressbar {
+  width: 100%;
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
 
-   .progressContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
+.completed {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  min-width: 4px;
+}
 
-   }
+.percentage {
+  font-size: 12px;
+  color: var(--text-muted);
+}
 
-   .progressbar {
-    width: 100%;
-    height: 6px;
-    background-color: #ddd;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-   }
+.quiz {
+  margin-top: 24px;
+}
 
-   .completed {
-    height: 100%;
-    background: var(--accent);
-    border-radius:10px ;
-    transition: width 0.3s ease;
-    min-width: 4px;
-   }
+.quiz .dailyP {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
 
-   .percentage {
-    font-size: 12px;
-    color: var(--text-muted);
-   }
+.quizBlock {
+  background: var(--bg-card);
+  width: 150px;
+  height: auto;
+  padding: 20px;
 
-   .quiz {
-    margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-   }
+  color: var(--accent);
+  border-radius: 10px;
+  margin-top: 20px;
+  gap: 2px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+}
 
-   .quiz .dailyP {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text-primary);
-   }
+.quizBlock i {
+  font-size: 30px;
+}
 
+.quizBlock span {
+  background: var(--bg-primary);
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 500px;
+}
 
-   .quizBlock{
-    background: var(--bg-card);
-    width: 150px;
-    height: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--accent);
-    border-radius: 10px;
-    margin-top: 20px ;
-    gap:2px; 
-    box-shadow: var(--shadow-card );
-   }
+.quizBlock p {
+  font-size: 20px;
+  margin-top: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
 
-   .quizBlock i {
-     font-size:30px;
-   
-    
-   }
-
-   .quizBlock span{
-    background: var(--bg-primary);
-    margin-top: 25px;
-    padding: 20px;
-    border-radius: 500px;
-
-   }
-
-   .quizBlock p {
-    font-size: 20px;
-    margin-top: 13px;
-    font-weight: 500;
-    color: var(--text-primary);
-   }
-
-   .sub {
-    color: var(--text-dark);
-   }
-
+.sub {
+  color: var(--text-dark);
+}
 
 @media (min-width: 768px) {
-    .learn {
-        max-width: 480px;
-        margin: 0 auto;
-    }
+  .screen {
+    max-width: 480px;
+    margin: 0 auto;
+  }
 
-    .imageContainer {
-        height: 220px;
-    }
+  .imageContainer {
+    height: 220px;
+  }
 
-    .heading {
-        font-size: 32px;
-    }
+  .heading {
+    font-size: 32px;
+  }
 }
+
 </style>
