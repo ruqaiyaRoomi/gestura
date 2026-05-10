@@ -113,194 +113,179 @@ onMounted(() => userProgress())
 </script>
 
 <style scoped>
-   .screen {
-  min-height: 100vh;
-  width: 100%;
-  background: var(--bg-primary);
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-}
+   .learn {
+    background: var( --bg-primary);
+    min-height: 100vh;
+    padding: 20px 16px 100px;
+   }
 
-.learn {
-  flex: 1;
-  background: var(--bg-primary);
-  padding: 20px 16px 100px;
-}
+   .title {
+    margin-top: 10px;
+    margin-bottom: 24px;
+   }
 
-.title {
-  margin-top: 10px;
-  margin-bottom: 24px;
-}
+   .heading {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+     color: var(--text-primary);
+  
+   }
 
-.heading {
-  font-size: 28px;
-  font-weight: 700;
-  margin: 0;
-  color: var(--text-primary);
-}
+   .subheading {
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+   }
 
-.subheading {
-  margin-top: 10px;
-  color: var(--text-muted);
-  font-size: 14px;
-}
+   .bodyContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+   }
 
-.bodyContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+   .cardContainer {
+    background: var(--bg-card);
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: var(--shadow-card );
+    
+   }
 
-.cardContainer {
-  background: var(--bg-card);
-  border-radius: 22px;
-  padding: 18px;
-  box-shadow: var(--shadow-card);
-  cursor: pointer;
-}
+   .imageContainer {
+    width: 100%;
+    height: 180px;
+    background: var(--bg-primary);
+   
+    border-radius:16px ;
 
-.imageContainer {
-  width: 100%;
-  height: 180px;
-  background: var(--bg-primary);
-  border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+   }
 
-.imageContainer img {
-  width: 75%;
-  height: auto;
-}
+   .imageContainer img {
+    width: 75%;
+    height: auto;
 
-.imageContainer .aslImage {
-  width: 58%;
-}
+   }
 
-.aslBody {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 14px;
-}
+   .imageContainer .aslImage {
+    width: 58%;
+   }
 
-.type {
-  font-size: 12px;
-  color: var(--text-muted);
-}
+   .aslBody {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 14px;
+  
+   }
 
-.textblock {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+   .type {
+    font-size: 12px;
+    color: var(--text-muted);
+   }
 
-.ASL {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
+   .textblock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
 
-.aslBody span {
-  font-size: 18px;
-  color: var(--text-muted);
-}
+   .ASL {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+   }
 
-.progressContainer {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-}
+   .aslBody span{
+    font-size: 18px;
+    color: var(--text-muted);
+   }
 
-.progressbar {
-  width: 100%;
-  height: 6px;
-  background-color: #ddd;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-}
 
-.completed {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 10px;
-  transition: width 0.3s ease;
-  min-width: 4px;
-}
+   .progressContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
 
-.percentage {
-  font-size: 12px;
-  color: var(--text-muted);
-}
+   }
 
-.quiz {
-  margin-top: 24px;
-}
+   .progressbar {
+    width: 100%;
+    height: 6px;
+    background-color: #ddd;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+   }
 
-.quiz .dailyP {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
+   .completed {
+    height: 100%;
+    background: var(--accent);
+    border-radius:10px ;
+    transition: width 0.3s ease;
+    min-width: 4px;
+   }
 
-.quizBlock {
-  background: var(--bg-card);
-  width: 150px;
-  height: auto;
-  padding: 20px;
+   .percentage {
+    font-size: 12px;
+    color: var(--text-muted);
+   }
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+   .quiz {
+    margin-top: 24px;
 
-  color: var(--accent);
-  border-radius: 10px;
-  margin-top: 20px;
-  gap: 2px;
-  box-shadow: var(--shadow-card);
-  cursor: pointer;
-}
+   }
 
-.quizBlock i {
-  font-size: 30px;
-}
+   .quiz .dailyP {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+   }
 
-.quizBlock span {
-  background: var(--bg-primary);
-  margin-top: 25px;
-  padding: 20px;
-  border-radius: 500px;
-}
 
-.quizBlock p {
-  font-size: 20px;
-  margin-top: 13px;
-  font-weight: 500;
-  color: var(--text-primary);
-}
+   .quizBlock{
+    background: var(--bg-card);
+    width: 150px;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent);
+    border-radius: 10px;
+    margin-top: 20px ;
+    gap:2px; 
+    box-shadow: var(--shadow-card );
+   }
 
-.sub {
-  color: var(--text-dark);
-}
+   .quizBlock i {
+     font-size:30px;
+   
+    
+   }
 
-@media (min-width: 768px) {
-  .screen {
-    max-width: 480px;
-    margin: 0 auto;
-  }
+   .quizBlock span{
+    background: var(--bg-primary);
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 500px;
 
-  .imageContainer {
-    height: 220px;
-  }
+   }
 
-  .heading {
-    font-size: 32px;
-  }
-}
+   .quizBlock p {
+    font-size: 20px;
+    margin-top: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+   }
+
+   .sub {
+    color: var(--text-dark);
+   }
 
 </style>
