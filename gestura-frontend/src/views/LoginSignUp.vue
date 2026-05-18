@@ -119,7 +119,7 @@ function continueAsGuest() {
 .wave {
   position: absolute;
   left: 50%;
-  bottom: 25px;
+  bottom: -35px;
   width: 120%;
   max-width: none;
   height: auto;
