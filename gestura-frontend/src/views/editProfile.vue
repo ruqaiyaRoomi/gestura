@@ -1,6 +1,6 @@
 <template>
-  <Header />
   <div class="editProfile">
+     <Header />
     <div class="title">
       <span class="back" @click="router.back()"
         ><i class="fa-solid fa-arrow-left"></i

@@ -142,13 +142,16 @@ console.log("currentLetter:", currentLetter)
 
 <style scoped>
    .letterDetail {
-    background: var( --bg-primary);
-    min-height: 100vh;
-    padding: 20px 16px 100px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
    }
 
    .header {

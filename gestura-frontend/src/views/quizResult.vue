@@ -1,6 +1,6 @@
 <template>
-    <Header/>
     <div class="result">
+      <Header/>
         <div class="header">
             <span class="back" v-on:click="router.back()"><i class="fa-solid fa-arrow-left"></i></span>
             <span class="title">Quiz</span>

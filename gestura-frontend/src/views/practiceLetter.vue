@@ -1,5 +1,4 @@
 <template>
-    
     <div class="translate">
     <header>
         <span class="close"  v-on:click="router.push('/letterDetails')"><i class="fa-solid fa-xmark"></i></span>

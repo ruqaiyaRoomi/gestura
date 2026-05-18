@@ -1,6 +1,6 @@
 <template>
-    <Header />
     <div class="settingsScreen">
+        <Header />
         <div class="title">
             <span class="back" @click="router.back()"><i class="fa-solid fa-arrow-left"></i></span>
             <h1>Settings</h1>
@@ -163,11 +163,16 @@ onMounted (() => {
 
 <style scoped>
 .settingsScreen {
-    min-height: 100vh;
-    background-color: var(--bg-primary);
-    display: flex;
-    flex-direction: column;
-    padding: 0px 20px 120px;
+    height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
 }
 
 .back {

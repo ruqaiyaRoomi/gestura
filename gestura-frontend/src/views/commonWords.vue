@@ -1,6 +1,6 @@
 <template>
-    <Header/>
     <div class="commonWords">
+          <Header/>
         <div class="pageHeader">
             <span class="back" v-on:click="router.push('/learn')"><i class="fa-solid fa-arrow-left"></i></span>
             <span class="title">Common Words</span>
@@ -74,9 +74,16 @@ onMounted(() => {
 
 <style scoped>
    .commonWords {
-        background: var(--bg-primary);
-        min-height: 100vh;
-        padding: 20px 16px 100px;
+        height: 100vh;
+        max-height: 100vh;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        background-color: var(--bg-primary);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
    }
 
    .pageHeader {

@@ -1,7 +1,6 @@
 <template>
-    <Header />
-
     <div class="profile">
+       <Header />
     <!-- User info section -->
         <div class="top">
         <p class="pageTitle">Profile</p>
@@ -130,12 +129,16 @@ async function getUserStats() {
 <style scoped>
    
 .profile {
-  background: var(--bg-primary);
-  min-height: 100vh;
-  padding: 16px 20px 100px;
+  height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  overflow: hidden;
+  position: relative;
 }
 
 .pageTitle {
