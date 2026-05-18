@@ -125,7 +125,13 @@ async function login() {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
 }
+
 
 .content {
   width: 100%;
@@ -137,6 +143,9 @@ async function login() {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+
+  position: relative;
+  z-index: 1;
 }
 
 .top {
@@ -254,12 +263,16 @@ button:disabled {
 }
 
 .wave {
-  width: 100%;
-  display: block;
-  margin-top: auto;
-  position: absolute;
+   position: absolute;
   bottom: 0;
   left: 0;
+
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+
+  display: block;
+  z-index: 0;
 }
 
 .modalOverlay {
@@ -322,11 +335,6 @@ button:disabled {
 }
 
 @media (min-width: 768px) {
-  .loginScreen {
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
   .top {
     margin-top: 100px;
   }

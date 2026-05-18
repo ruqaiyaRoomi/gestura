@@ -57,10 +57,13 @@ function continueAsGuest() {
 .screen {
   min-height: 100vh;
   width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
   background-color: var(--bg-primary);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
 
 .header {
@@ -86,33 +89,43 @@ function continueAsGuest() {
 
 .top {
   position: relative;
-  flex: 1;
+  height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .illustration {
   width: 95%;
   max-width: 420px;
+  height: auto;
   object-fit: contain;
   margin-top: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .wave {
   position: absolute;
-  bottom: -3px;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  z-index: 2;
 }
 
 .body {
   background-color: var(--bg-primary);
-  padding: 30px 24px 40px;
+  padding: 28px 24px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
+
 
 .title {
   font-size: 26px;
@@ -183,9 +196,8 @@ function continueAsGuest() {
 }
 
 @media (min-width: 768px) {
-  .screen {
-    max-width: 480px;
-    margin: 0 auto;
+  .top {
+    max-width: 420px;
   }
 }
 </style>
