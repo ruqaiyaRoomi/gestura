@@ -107,11 +107,10 @@ function continueAsGuest() {
 }
 
 .wave {
-  position: absolute;
+   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  max-width: 100%;
   height: auto;
   display: block;
   z-index: 2;
