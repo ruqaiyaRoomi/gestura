@@ -106,7 +106,7 @@ function continueAsGuest() {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  height: 88%;
+  height: 78%;
   object-fit: contain;
   object-position: top center;
   z-index: 1;
