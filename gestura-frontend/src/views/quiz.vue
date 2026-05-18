@@ -1,6 +1,7 @@
 <template>
     <div class="quiz">
          <Header/>
+         <div class="content">
          <div class="header">
             <span class="back" v-on:click="router.back()"><i class="fa-solid fa-arrow-left"></i></span>
             <span class="title">Quiz</span>
@@ -35,9 +36,9 @@
             </button>
         </div>
         </div>
+         </div>
+         <NavBar/>
     </div>
-
-    <NavBar/>
 </template>
 
 <script setup>
@@ -54,14 +55,22 @@ const selected = ref(5)
 <style scoped>
 
     .quiz {
-        background: var(--bg-primary);
         min-height: 100vh;
-        padding: 20px 16px 100px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
     }
    
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0px 20px 20px;
+    min-height: 0;
+}
  .title {
     font-size: 20px;
     margin-top: 10px;

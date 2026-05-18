@@ -1,6 +1,8 @@
 <template>
     <div class="wordDetails">
          <Header />
+
+         <div class="content">
          <div class="header">
             <span class="back" v-on:click="router.back()"><i class="fa-solid fa-arrow-left"></i></span>
             <span class="title">{{ word }}</span>
@@ -22,7 +24,8 @@
         </div>
 
     </div>
-<NavBar />
+    <NavBar />
+    </div>
 </template>
 
 <script setup>
@@ -86,12 +89,22 @@ async function markDone() {
 <style scoped>
 
 .wordDetails {
-    background: var(--bg-primary);
-    min-height: 100vh;
-    padding: 20px 16px 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+     min-height: 100vh;
+        background-color: var(--bg-primary);
+        display: flex;
+        flex-direction: column;
+    
+        max-width: 480px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0px 20px 20px;
+    min-height: 0;
 }
 
 .header{
@@ -190,6 +203,7 @@ async function markDone() {
 
 .ready:hover {
      background-color: var(--accent);
+     color: white;
 }
 
 @media (min-width: 768px) {

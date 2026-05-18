@@ -90,12 +90,16 @@ console.log(userStore.user)
 <style scoped>
 
 .result {
-  background: var(--bg-primary);
-  min-height: 100vh;
-  padding: 16px 16px 100px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+ min-height: 100vh;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px 90px;
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    gap: 10px;
 }
 
 .header {

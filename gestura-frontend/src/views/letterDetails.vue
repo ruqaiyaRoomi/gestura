@@ -1,9 +1,10 @@
 <template>
     <!-- Only render if valid letter exist -->
     <div v-if="currentLetter">
-    <Header/>
     <!-- letter detail screen -->
     <div class="letterDetail">
+          <Header/>
+        <div class="content">
          <Transition>
             <div v-if="showStatus" class="statusBanner">
                 <i class="fa-solid fa-circle-info"></i>
@@ -51,15 +52,16 @@
                 </span>
             </button>
         </div>
+        </div>
+         <NavBar />
     </div>
-
-    <NavBar />
+     
     </div>
-
     <div v-else>
 
         letter not found
     </div>
+     
 </template>
 
 <script setup>
@@ -142,18 +144,23 @@ console.log("currentLetter:", currentLetter)
 
 <style scoped>
    .letterDetail {
-    height: 100vh;
-  max-height: 100vh;
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  background-color: var(--bg-primary);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
    }
 
+   .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0px 20px 20px;
+    min-height: 0;
+}
    .header {
     display: flex;
     justify-content: space-between;
@@ -161,11 +168,13 @@ console.log("currentLetter:", currentLetter)
    }
 
    .back{
+    padding-bottom: 15px;
     font-size: 20px;
     color: var(--text-primary);
    }
 
    .title {
+    padding-bottom: 15px;
     font-size: 18px;
     font-weight: 700;
     color: var(--text-primary);
@@ -179,6 +188,7 @@ console.log("currentLetter:", currentLetter)
     align-items: center;
     padding: 24px;
     box-shadow: var(--shadow-card);
+    margin-bottom: 10px ;
     
    }
 
@@ -239,7 +249,7 @@ console.log("currentLetter:", currentLetter)
    }
 
    .markDoneButton {
-    background: transparent !important;
+    background: rgb(235, 195, 141) !important;
     color: var(--accent);
     border: 1.5px solid var(--accent) !important;
     box-shadow: none !important;

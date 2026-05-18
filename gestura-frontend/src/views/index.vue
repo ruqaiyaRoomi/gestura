@@ -2,6 +2,8 @@
 <!-- navigation -->
    <div class="indexScreen">
        <Header />
+
+    <div class="content">
     <!-- welcome section -->
      <div class="welcome">
         <h1>Welcome back!</h1>
@@ -57,6 +59,7 @@
             </div>
         </div>
      </div>
+    </div>
       <NavBar :currentPage="screen"
             @index="currentPage='index'"
             @learn="currentPage='learn'"
@@ -134,13 +137,20 @@ onMounted(() => {
   background-color: var(--bg-primary);
   display: flex;
   flex-direction: column;
-  padding: 0px 20px 90px;
+  
 
   max-width: 480px;
   width: 100%;
   margin: 0 auto;
   position: relative;
   overflow-x: hidden;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0px 20px 20px;
+  min-height: 0;
 }
 
 

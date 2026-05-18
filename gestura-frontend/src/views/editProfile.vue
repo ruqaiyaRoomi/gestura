@@ -1,6 +1,7 @@
 <template>
   <div class="editProfile">
      <Header />
+    <div class="content">
     <div class="title">
       <span class="back" @click="router.back()"
         ><i class="fa-solid fa-arrow-left"></i
@@ -47,6 +48,7 @@
         <p>The email or password you entered is incorrect. Please try again.</p>
         <button class="doneBtn" @click="handleDone">Done</button>
       </div>
+    </div>
     </div>
     <NavBar />
   </div>
@@ -120,11 +122,21 @@ function handleDone() {
 
 <style scoped>
 .editProfile {
-  min-height: 100vh;
-  background-color: var(--bg-primary);
-  display: flex;
-  flex-direction: column;
-  padding: 0px 20px 120px;
+   min-height: 100vh;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0px 20px 20px;
+  min-height: 0;
 }
 
 .back {

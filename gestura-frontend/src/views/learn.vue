@@ -1,6 +1,7 @@
 <template>
     <div class="learn">
     <Header />
+    <div class="content">
    <!-- page title -->
     <div class="title">
         <h1 class="heading">Learn</h1>
@@ -67,7 +68,8 @@
                 <p>Quiz</p>
             </div>
         </div>
-    <NavBar />
+    </div>
+        <NavBar />
     </div>
 </template>
 
@@ -118,12 +120,19 @@ onMounted(() => userProgress())
     background-color: var(--bg-primary);
     display: flex;
     flex-direction: column;
-    padding: 0px 20px 90px;
+
 
     max-width: 480px;
     width: 100%;
     margin: 0 auto;
     position: relative;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0px 20px 20px;
+  min-height: 0;
 }
 
    .title {

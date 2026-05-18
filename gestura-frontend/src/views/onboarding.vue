@@ -76,11 +76,14 @@
 <style scoped>
     .onboarding {
         min-height: 100vh;
-        width: 100%;
-        background-color: var(--bg-primary);
-        display: flex;
-        flex-direction: column ;
-        overflow: hidden;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px 20px;
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
 
     }
 

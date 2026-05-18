@@ -1,6 +1,7 @@
 <template>
     
     <div class="translate">
+    <div class="content">
     <header>
         <span class="close"  v-on:click="exit"><i class="fa-solid fa-xmark"></i></span>
         <span class="subheading">Sign <span class="arrow"><i class="fa-solid fa-arrow-right-long"></i></span> Text</span>
@@ -25,6 +26,7 @@
     <div class="actions">
         <button class="btn-done" v-on:click="handleDone"><span><i class="fa-solid fa-check"></i></span> Done</button>
         <button class="btn-retry" v-on:click="retry"><span><i class="fa-solid fa-arrow-rotate-right"></i></span> Retry</button>
+    </div>
     </div>
     <NavBar />
     </div>
@@ -132,15 +134,24 @@ async function startCameraDetection() {
 </script>
 
 <style scoped>
-   
     .translate{
-        background-color: var(--bg-primary);
         min-height: 100vh;
+        background-color: var(--bg-primary);
         display: flex;
         flex-direction: column;
-        padding: 20px 16px;
-        box-sizing: border-box;
+    
+        max-width: 480px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
     }
+
+    .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0px 20px 20px;
+    min-height: 0;
+}
 
     header {
         display: flex;

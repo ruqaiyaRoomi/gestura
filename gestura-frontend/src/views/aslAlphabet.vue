@@ -2,6 +2,7 @@
   <div class="aslAlphabet">
       <Header />
     <!-- Search Bar -->
+     <div class="content">
     <div class="search">
       <span><i class="fa-solid fa-magnifying-glass"></i></span>
       <input type="search" placeholder="Search" />
@@ -25,6 +26,7 @@
     </div>
   </div>
   <NavBar />
+  </div>
 </template>
 
 <script setup>
@@ -156,15 +158,22 @@ const alphabets = [
 
 <style scoped>
 .aslAlphabet {
-  height: 100vh;
-  max-height: 100vh;
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  background-color: var(--bg-primary);
-  display: flex;
-  flex-direction: column;
-  position: relative;
+ min-height: 100vh;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0px 20px 20px;
+  min-height: 0;
 }
 
 .search {

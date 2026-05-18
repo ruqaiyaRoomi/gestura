@@ -1,5 +1,6 @@
 <template>
     <div class="translate">
+        <div class="content">
     <header>
         <span class="close"  v-on:click="router.push('/letterDetails')"><i class="fa-solid fa-xmark"></i></span>
         <span class="heading">Practice</span>
@@ -31,6 +32,7 @@
         <button class="btn-done" v-on:click="handleDone"><span><i class="fa-solid fa-check"></i></span> Done</button>
         <button class="btn-retry" @click="startDetection"><span><i class="fa-solid fa-arrow-rotate-right"></i></span> Retry</button>
     </div>
+        </div>
     <NavBar />
     </div>
 
@@ -168,13 +170,23 @@ async function handleDone (){
 <style scoped>
    
     .translate{
-        background-color: var(--bg-primary);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        padding: 20px 16px;
-        box-sizing: border-box;
+         min-height: 100vh;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
     }
+
+    .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0px 20px 20px;
+    min-height: 0;
+}
 
     header {
         display: flex;

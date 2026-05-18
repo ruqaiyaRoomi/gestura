@@ -1,6 +1,7 @@
 <template>
     <div class="quiz">
         <Header/>
+        <div class="content">
          <div class="header">
             <span class="back" v-on:click="router.back()"><i class="fa-solid fa-arrow-left"></i></span>
             <span class="title">Quiz</span>
@@ -52,7 +53,9 @@
          <button class="doneBtn" @click="correct">✓ Submit</button>
        </div>
     </div>
-    <NavBar/>
+    <NavBar />
+    </div>
+    
 </template>
 
 <script setup>
@@ -232,13 +235,24 @@ function finish() {
 
 <style scoped>
    .quiz{
-     background: var(--bg-primary);
-        min-height: 100vh;
-        padding: 16px 16px 100px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+     min-height: 100vh;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    gap: 10px;
     }
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0px 20px 20px;
+    min-height: 0;
+}
 
     .header {
         display: flex;

@@ -59,10 +59,11 @@ function profileView(){
 
 <style scoped>
     .navbar{
-        position: fixed;
+        position: sticky;
         bottom: 0;
-        left: 0;
+        margin-top: auto;
         width: 100%;
+        flex-shrink: 0;
 
         display: flex;
         justify-content: space-around;
@@ -75,7 +76,10 @@ function profileView(){
         z-index: 1000;   
 
         box-shadow: 0 -3px 12px rgba(0, 0, 0 , 0.08);
-        
+        overflow: hidden;
+
+        margin: 0;
+        box-sizing: border-box;
     }
 
 
@@ -105,23 +109,5 @@ function profileView(){
         background-color: transparent;
         border: none;
         transition: 0.2s ease;
-    }
-
-    @media (min-width: 768px) {
-        .navbar {
-            max-width: 480px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 16px 16px 0 0;
-        }
-
-
-        .nav-item i {
-            font-size: 22px;
-        }
-
-        .nav-item button {
-            font-size: 13px;
-        }
     }
 </style>
