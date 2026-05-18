@@ -55,11 +55,16 @@ function continueAsGuest() {
 
 <style scoped>
 .screen {
-  height: 100vh;               
+  height: 100vh;
   max-height: 100vh;
-  overflow: hidden;            
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  position: relative;
 }
 
 .header {
@@ -67,6 +72,7 @@ function continueAsGuest() {
   background-color: var(--bg-primary);
   position: relative;
   z-index: 3;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -86,11 +92,12 @@ function continueAsGuest() {
   color: var(--text-dark);
 }
 
-
 .top {
   position: relative;
-  flex: 1;                     
-  min-height: 0;               
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background-color: var(--bg-primary); /* ✅ was missing/white */
 }
 
 .illustration {
@@ -99,7 +106,6 @@ function continueAsGuest() {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 480px;
   height: 88%;
   object-fit: contain;
   object-position: top center;
@@ -119,15 +125,16 @@ function continueAsGuest() {
 
 .body {
   background-color: var(--bg-primary);
-  padding: 24px 24px 32px;     
-  flex-shrink: 0;              
+  padding: 24px 24px 32px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;                   
+  gap: 14px;
   position: relative;
   z-index: 4;
 }
+
 .title {
   font-size: 26px;
   font-weight: 700;
@@ -151,9 +158,9 @@ function continueAsGuest() {
   border-radius: 14px;
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
   box-shadow: 0 8px 18px var(--accent-shadow);
   transition: 0.2s ease;
-  cursor: pointer;
 }
 
 .createAccount:hover {
@@ -171,7 +178,8 @@ function continueAsGuest() {
 .line {
   flex: 1;
   height: 1px;
-  background-color: var(--text-muted);   
+  background-color: var(--text-muted);
+  opacity: 0.4;
 }
 
 .login {
@@ -183,8 +191,12 @@ function continueAsGuest() {
   border-radius: 14px;
   font-size: 16px;
   font-weight: 600;
-  transition: 0.2s ease;
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.login:hover {
+  opacity: 0.8;
 }
 
 .guest {
@@ -198,11 +210,4 @@ function continueAsGuest() {
 .guest:hover {
   opacity: 0.8;
 }
-
-@media (min-width: 768px) {
-  .top {
-    max-width: 480px;
-  }
-}
-
 </style>
