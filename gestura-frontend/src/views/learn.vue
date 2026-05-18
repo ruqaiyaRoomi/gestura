@@ -114,14 +114,12 @@ onMounted(() => userProgress())
 
 <style scoped>
    .learn {
-  background: var(--bg-primary);
   min-height: 100vh;
-  padding: 20px 16px 100px;
-  max-width: 430px;
   width: 100%;
-  margin: 0 auto;
-  position: relative;
-  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
    .title {

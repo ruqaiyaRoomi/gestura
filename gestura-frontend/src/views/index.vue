@@ -1,7 +1,7 @@
 <template>
-     <Header />
 <!-- navigation -->
    <div class="indexScreen">
+       <Header />
     <!-- welcome section -->
      <div class="welcome">
         <h1>Welcome back!</h1>
@@ -130,12 +130,19 @@ onMounted(() => {
 
 <style scoped>
 .indexScreen{
-    min-height: 100vh;
-    background-color: var(--bg-primary);
-    display: flex;
-    flex-direction:column ;
-    padding: 0px 20px 90px;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px 90px;
+
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
 }
+
 
 .welcome {
     margin: 20px 0 30px;
