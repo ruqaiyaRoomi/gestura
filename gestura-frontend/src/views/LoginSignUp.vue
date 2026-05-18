@@ -113,8 +113,7 @@ function continueAsGuest() {
   object-fit: contain;
   position: relative;
   z-index: 1;
-
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 
 .wave {
@@ -126,22 +125,20 @@ function continueAsGuest() {
   height: auto;
   display: block;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
 }
 
 .body {
   background-color: var(--bg-primary);
-  padding: 42px 24px 40px;
+  padding: 70px 24px 40px;
+  margin-top: -55px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   position: relative;
-  z-index: 1;
+  z-index: 4;
 }
-
-
-
 
 .title {
   font-size: 26px;
