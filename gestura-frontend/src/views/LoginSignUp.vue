@@ -55,15 +55,11 @@ function continueAsGuest() {
 
 <style scoped>
 .screen {
-  min-height: 100vh;
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  background-color: var(--bg-primary);
+  height: 100vh;               
+  max-height: 100vh;
+  overflow: hidden;            
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  position: relative;
 }
 
 .header {
@@ -93,50 +89,45 @@ function continueAsGuest() {
 
 .top {
   position: relative;
-  height: 580px;
-  background-color: var(--bg-primary);
-  display: flex;
-  align-items: flex-start;      
-  justify-content: center;
-  overflow: hidden;
-  padding-top: 10px;
+  flex: 1;                     
+  min-height: 0;               
 }
 
-
 .illustration {
-  width: 95%;
-  max-width: 430px;
-  height: auto;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: 88%;
   object-fit: contain;
   object-position: top center;
-  position: relative;
   z-index: 1;
 }
 
 .wave {
- position: absolute;
+  position: absolute;
   left: 50%;
   bottom: 0;
   width: 120%;
-  max-width: none;
   height: auto;
   display: block;
   transform: translateX(-50%);
-  z-index: 3;                
+  z-index: 3;
 }
 
 .body {
   background-color: var(--bg-primary);
-  padding: 32px 24px 40px;
-  margin-top: 0;
+  padding: 24px 24px 32px;     
+  flex-shrink: 0;              
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 14px;                   
   position: relative;
   z-index: 4;
 }
-
 .title {
   font-size: 26px;
   font-weight: 700;
