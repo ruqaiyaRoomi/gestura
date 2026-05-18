@@ -113,13 +113,14 @@ function continueAsGuest() {
   object-fit: contain;
   position: relative;
   z-index: 1;
-  margin-bottom: 65px;
+
+  margin-bottom: 15px;
 }
 
 .wave {
   position: absolute;
   left: 50%;
-  bottom: -35px;
+  bottom: 0;
   width: 120%;
   max-width: none;
   height: auto;
