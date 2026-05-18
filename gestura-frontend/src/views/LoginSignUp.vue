@@ -98,7 +98,7 @@ function continueAsGuest() {
 
 .top {
   position: relative;
-  height: 430px;
+  height: 520px;
   background-color: var(--bg-primary);
   display: flex;
   align-items: flex-end;
@@ -107,22 +107,24 @@ function continueAsGuest() {
 }
 
 .illustration {
-  width: 92%;
-  max-width: 420px;
+  width: 95%;
+  max-width: 430px;
   height: auto;
   object-fit: contain;
   position: relative;
   z-index: 1;
-  margin-bottom: 55px;
+  margin-bottom: 65px;
 }
 
 .wave {
   position: absolute;
-  left: 0;
-  bottom: -1px;
-  width: 100%;
+  bottom: 0;
+  left: 50%;
+  width: 120%;
+  max-width: none;
   height: auto;
   display: block;
+  transform: translateX(-50%);
   z-index: 2;
 }
 
