@@ -93,29 +93,28 @@ function continueAsGuest() {
 
 .top {
   position: relative;
-  height: 620px;          
+  height: 580px;
   background-color: var(--bg-primary);
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;      
   justify-content: center;
   overflow: hidden;
+  padding-top: 10px;
 }
 
 
 .illustration {
-  width: 100%;
-  max-width: 480px;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;   
-  position: absolute;
-  top: 0;
-  left: 0;
+  width: 95%;
+  max-width: 430px;
+  height: auto;
+  object-fit: contain;
+  object-position: top center;
+  position: relative;
   z-index: 1;
 }
 
 .wave {
-  position: absolute;
+ position: absolute;
   left: 50%;
   bottom: 0;
   width: 120%;
@@ -123,7 +122,19 @@ function continueAsGuest() {
   height: auto;
   display: block;
   transform: translateX(-50%);
-  z-index: 3;                   
+  z-index: 3;                
+}
+
+.body {
+  background-color: var(--bg-primary);
+  padding: 32px 24px 40px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 4;
 }
 
 .title {
