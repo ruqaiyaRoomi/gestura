@@ -47,9 +47,6 @@ onMounted(() => {
         color: var(--text-dark);
     }
 
-
-
-
     @media (min-width: 768px) {
         .header {
             padding: 20px 40px;
