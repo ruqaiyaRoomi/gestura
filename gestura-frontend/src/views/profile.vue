@@ -137,7 +137,6 @@ async function getUserStats() {
   background-color: var(--bg-primary);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   position: relative;
 }
 

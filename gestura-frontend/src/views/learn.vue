@@ -124,7 +124,6 @@ onMounted(() => userProgress())
     width: 100%;
     margin: 0 auto;
     position: relative;
-    overflow-x: hidden;
 }
 
    .title {
