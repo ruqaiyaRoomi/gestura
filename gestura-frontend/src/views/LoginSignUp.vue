@@ -87,29 +87,39 @@ function continueAsGuest() {
   color: var(--text-dark);
 }
 
+
+
+.header {
+  padding: 16px 20px;
+  background-color: var(--bg-primary);
+  position: relative;
+  z-index: 3;
+}
+
 .top {
   position: relative;
-  height: 420px;
+  height: 430px;
+  background-color: var(--bg-primary);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   overflow: hidden;
 }
 
 .illustration {
-  width: 95%;
+  width: 92%;
   max-width: 420px;
   height: auto;
   object-fit: contain;
-  margin-top: 10px;
   position: relative;
   z-index: 1;
+  margin-bottom: 55px;
 }
 
 .wave {
-   position: absolute;
-  bottom: 0;
+  position: absolute;
   left: 0;
+  bottom: -1px;
   width: 100%;
   height: auto;
   display: block;
@@ -118,12 +128,16 @@ function continueAsGuest() {
 
 .body {
   background-color: var(--bg-primary);
-  padding: 28px 24px 40px;
+  padding: 42px 24px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  position: relative;
+  z-index: 1;
 }
+
+
 
 
 .title {
